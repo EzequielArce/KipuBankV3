@@ -135,3 +135,14 @@ Revoca el rol de administrador a una dirección existente.
 | `getPair(address tokenA, address tokenB)`                               | Devuelve la dirección del par Uniswap entre dos tokens.                           |
 | `getAmountOut(uint256 amountIn, uint256 reserveIn, uint256 reserveOut)` | Calcula la cantidad de salida esperada en un swap según la fórmula de Uniswap V2. |
 
+---
+
+## Notas de decisiones
+
+En versiones posteriores del contrato podría resultar conveniente **migrar la integración de Uniswap** hacia el uso del **Router** en lugar de la **Factory**, o bien adoptar una versión más avanzada del protocolo (por ejemplo, **Uniswap V3** o **V4** una vez establecida su adopción).
+
+El uso del **Router** proporcionaría una **mayor abstracción y simplicidad en el código**, ya que encapsula la lógica de intercambio de tokens y gestión de pares, evitando la necesidad de calcular manualmente las reservas o la cantidad esperada de salida (`getAmountOut`).  
+Esto permitiría un contrato más **limpio, mantenible y seguro**, reduciendo la complejidad de las funciones de depósito y conversión.
+
+Además, una futura migración a una versión más reciente de Uniswap podría mejorar la **eficiencia del gas**, la **precisión de precios** y ofrecer nuevas funcionalidades como **liquidez concentrada** o **mejor control de slippage**, optimizando así la experiencia del usuario y la robustez general del sistema.
+
